@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OurStory</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_add_book">AddBookActivity</string>
+    <string name="title_activity_chapter_add">ChapterAddActivity</string>
+    <string name="title_activity_index_view">IndexViewActivity</string>
+    <string name="app_id">332808716919017</string>
+
+</resources>
