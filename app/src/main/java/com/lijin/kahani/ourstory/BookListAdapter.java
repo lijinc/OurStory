@@ -55,7 +55,6 @@ public class BookListAdapter extends BaseAdapter implements View.OnClickListener
         public TextView vAuthor;
         public TextView vTitle;
         public TextView vRating;
-        public TextView vView;
         public ImageView vThumb;
     }
     @Override
@@ -72,7 +71,6 @@ public class BookListAdapter extends BaseAdapter implements View.OnClickListener
             holder.vTitle = (TextView) vi.findViewById(R.id.title_text);
             holder.vAuthor=(TextView)vi.findViewById(R.id.author_text);
             holder.vRating=(TextView)vi.findViewById(R.id.rating_txt);
-            holder.vView=(TextView)vi.findViewById(R.id.views_text);
             holder.vThumb=(ImageView)vi.findViewById(R.id.thumbnail_img);
 
             /************  Set holder with LayoutInflater ************/
@@ -87,7 +85,6 @@ public class BookListAdapter extends BaseAdapter implements View.OnClickListener
             holder.vTitle.setText( arrayList.get(position).getString("title"));
             holder.vAuthor.setText( arrayList.get(position).getString("author"));
             holder.vRating.setText( "r "+String.valueOf(arrayList.get(position).getInt("rating")));
-            holder.vView.setText("v " + String.valueOf(arrayList.get(position).getInt("views")));
             ParseFile image = arrayList.get(position).getParseFile("photo");
             displayImage(image,holder.vThumb);
             /******** Set Item Click Listner for LayoutInflater for each row *******/

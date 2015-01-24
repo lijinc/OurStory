@@ -1,61 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item_linear_layout"
-    android:layout_height="match_parent"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    >
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="130dp"
-        android:id="@+id/thumbnail_img"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/ic_launcher"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+    android:layout_height="wrap_content"
+    android:descendantFocusability="beforeDescendants">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item_linear_layout"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@drawable/card_background_selector"
+        android:descendantFocusability="afterDescendants"
+        >
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="90dp"
+            android:id="@+id/thumbnail_img"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:text="MY STORY"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/thumbnail_img"
-        android:layout_toEndOf="@+id/thumbnail_img" />
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:text="MY STORY"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/thumbnail_img"
+            android:layout_toEndOf="@+id/thumbnail_img" />
 
-    <TextView
-        android:id="@+id/author_text"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:gravity="center"
-        android:text="lijin"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_below="@+id/title_text"
-        android:layout_toRightOf="@+id/thumbnail_img"
-        android:layout_toEndOf="@+id/thumbnail_img" />
+        <TextView
+            android:id="@+id/author_text"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="lijin"
+            android:textSize="18sp"
+            android:layout_below="@+id/title_text"
+            android:layout_toRightOf="@+id/thumbnail_img"
+            android:layout_toEndOf="@+id/thumbnail_img" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="r 350"
-        android:id="@+id/rating_txt"
-        android:paddingLeft="10dp"
-        android:layout_alignBottom="@+id/thumbnail_img"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="v 220k"
-        android:id="@+id/views_text"
-        android:layout_alignTop="@+id/rating_txt"
-        android:layout_toLeftOf="@+id/rating_txt"
-        android:layout_toStartOf="@+id/rating_txt" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/rating_txt"
+            android:paddingLeft="10dp"
+            android:layout_alignBottom="@+id/thumbnail_img"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
 
-</RelativeLayout>
+
+    </RelativeLayout>
+</FrameLayout>

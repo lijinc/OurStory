@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.facebook.FacebookRequestError;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
+import com.melnykov.fab.FloatingActionButton;
+import com.melnykov.fab.ScrollDirectionListener;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.Parse;
@@ -54,6 +57,25 @@ public class MainActivity extends ActionBarActivity {
         if (session != null && session.isOpened()) {
             makeMeRequest();
         }
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.attachToListView(listView, new ScrollDirectionListener() {
+            @Override
+            public void onScrollDown() {
+                Log.d("ListViewFragment", "onScrollDown()");
+            }
+
+            @Override
+            public void onScrollUp() {
+                Log.d("ListViewFragment", "onScrollUp()");
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),AddBookActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
