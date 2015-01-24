@@ -8,5 +8,6 @@
     <string name="title_activity_chapter_add">ChapterAddActivity</string>
     <string name="title_activity_index_view">IndexViewActivity</string>
     <string name="app_id">332808716919017</string>
+    <string name="title_activity_login">LoginActivity</string>
 
 </resources>

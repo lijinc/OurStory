@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -20,6 +21,9 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
 import java.util.Date;
@@ -30,6 +34,7 @@ public class AddBookActivity extends ActionBarActivity {
     RichEditText richEditText;
     EditText editText;
     String bookID;
+    String author;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,7 @@ public class AddBookActivity extends ActionBarActivity {
         book=new Book();
         richEditText=(RichEditText)findViewById(R.id.story_richtext);
         editText=(EditText)findViewById(R.id.edit_title_text);
+        addAuthor();
     }
 
 
@@ -64,6 +70,7 @@ public class AddBookActivity extends ActionBarActivity {
         if (id == R.id.action_dummy) {
             book.setTitle(editText.getText().toString());
             book.setDescription(richEditText.getText().toString());
+            book.setAuthor(author);
             book.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(com.parse.ParseException e) {
@@ -133,5 +140,19 @@ public class AddBookActivity extends ActionBarActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+    private void addAuthor() {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser.has("profile")) {
+            JSONObject userProfile = currentUser.getJSONObject("profile");
+            try {
 
+                if (userProfile.has("name")) {
+                    author=userProfile.getString("name");
+                }
+
+            } catch (JSONException e) {
+                Log.d("ERROR", "Error parsing saved user data.");
+            }
+        }
+    }
 }
