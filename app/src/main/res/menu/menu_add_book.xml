@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.lijin.kahani.ourstory.AddBookActivity">
     <item android:id="@+id/action_dummy_upload" android:title="upload"
+        android:icon="@drawable/ic_action_galery"
         android:orderInCategory="100" app:showAsAction="always" />
     <item android:id="@+id/action_dummy" android:title="dummy"
+        android:icon="@drawable/ic_action_save"
         android:orderInCategory="100" app:showAsAction="always" />
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.lijin.kahani.ourstory.IndexViewActivity">
     <item android:id="@+id/action_add_chap" android:title="+"
+        android:icon="@drawable/ic_action_add"
         android:orderInCategory="100" app:showAsAction="always" />
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_publish" android:title="@string/action_settings"
+        android:icon="@drawable/ic_action_publish"
+        android:orderInCategory="100" app:showAsAction="always" />
 </menu>

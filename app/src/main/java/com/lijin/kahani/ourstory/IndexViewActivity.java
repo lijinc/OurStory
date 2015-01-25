@@ -1,5 +1,6 @@
 package com.lijin.kahani.ourstory;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,13 +8,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -25,13 +29,14 @@ public class IndexViewActivity extends ActionBarActivity {
     ChapterListAdapter chapterListAdapter;
     ArrayList<ParseObject> arrayList;
     String bookID;
+    ParseACL defaultACL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index_view);
         Parse.initialize(this, "55y2jjhriwFkkm5QaO3nzoBY6JGvyGs1t7Lp2RLy", "aCVcCdBA5vUzR4Brpa0NekhY3NReTKYDHCMIQ7ST");
         ParseUser.enableAutomaticUser();
-        ParseACL defaultACL = new ParseACL();
+        defaultACL = new ParseACL();
         defaultACL.setPublicReadAccess(true);
         ParseACL.setDefaultACL(defaultACL, true);
         arrayList=new ArrayList<ParseObject>();
@@ -71,6 +76,10 @@ public class IndexViewActivity extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
+        else if(id==R.id.action_publish){
+
+            update();
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -93,4 +102,21 @@ public class IndexViewActivity extends ActionBarActivity {
             }
         });
     }
+
+    public void update(){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Book");
+
+        query.getInBackground(bookID, new GetCallback<ParseObject>() {
+            public void done(ParseObject book, com.parse.ParseException e) {
+                if (e == null) {
+                    // Now let's update it with some new data. In this case, only cheatMode and score
+                    // will get sent to the Parse Cloud. playerName hasn't changed.
+                    defaultACL.setWriteAccess(ParseUser.getCurrentUser(),true);
+                    book.setACL(defaultACL);
+                    book.saveInBackground();
+                }
+            }
+        });
+    }
+
 }

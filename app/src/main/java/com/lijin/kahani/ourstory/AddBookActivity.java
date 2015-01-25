@@ -1,5 +1,6 @@
 package com.lijin.kahani.ourstory;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.commonsware.cwac.richedit.RichEditText;
@@ -43,7 +45,7 @@ public class AddBookActivity extends ActionBarActivity {
         Parse.initialize(this, "55y2jjhriwFkkm5QaO3nzoBY6JGvyGs1t7Lp2RLy", "aCVcCdBA5vUzR4Brpa0NekhY3NReTKYDHCMIQ7ST");
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
-        defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicReadAccess(false);
         ParseACL.setDefaultACL(defaultACL, true);
         book=new Book();
         richEditText=(RichEditText)findViewById(R.id.story_richtext);
@@ -123,6 +125,8 @@ public class AddBookActivity extends ActionBarActivity {
                 photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
                 final ParseFile photoFile = new ParseFile("thumbnail_photo.jpg", byteArray);
+                final ProgressDialog progressDialog=new ProgressDialog(this);
+                progressDialog.show();
                 //wait
                 photoFile.saveInBackground(new SaveCallback() {
 
@@ -133,6 +137,7 @@ public class AddBookActivity extends ActionBarActivity {
                                     Toast.LENGTH_LONG).show();
                         } else {
                             book.setPhotoFile(photoFile);
+                            progressDialog.dismiss();
                         }
                     }
                 });

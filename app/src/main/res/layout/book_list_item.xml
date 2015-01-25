@@ -45,13 +45,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="12dp"
             android:id="@+id/rating_txt"
             android:paddingLeft="10dp"
+            android:paddingRight="15dp"
+            android:textColor="@android:color/holo_blue_light"
             android:layout_alignBottom="@+id/thumbnail_img"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:background="@android:drawable/star_on"
+            android:layout_toLeftOf="@id/rating_txt"
+            android:layout_alignBottom="@+id/thumbnail_img"
+            />
 
 
     </RelativeLayout>
