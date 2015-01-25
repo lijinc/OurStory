@@ -9,5 +9,6 @@
     <string name="title_activity_index_view">IndexViewActivity</string>
     <string name="app_id">332808716919017</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_my_library">MyLibrary</string>
 
 </resources>
