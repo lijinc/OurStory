@@ -20,7 +20,7 @@
         <activity
             android:name=".AddBookActivity"
             android:label="@string/title_activity_add_book"
-            android:noHistory="true" >
+             >
         </activity>
         <activity
             android:name=".ChapterAddActivity"
@@ -38,7 +38,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:noHistory="true" >
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,14 +53,6 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
 
-        <activity
-            android:name=".MyLibrary"
-            android:label="@string/title_activity_my_library" >
-        </activity>
-        <activity
-            android:name=".MyLIbraryActivity"
-            android:label="@string/title_activity_my_library" >
-        </activity>
     </application>
 
 </manifest>
